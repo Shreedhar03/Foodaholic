@@ -25,15 +25,15 @@
         }
 
         ::-webkit-input-placeholder {
-            color: black!important;
+            color: black !important;
         }
 
         :-ms-input-placeholder {
-            color: black!important;
+            color: black !important;
         }
 
         ::placeholder {
-            color: black!important;
+            color: black !important;
         }
 
         body {
@@ -55,54 +55,79 @@
             background-color: rgb(1, 48, 43);
         }
 
-        .container{
+        .container {
             position: relative;
             overflow: hidden;
         }
-        .container:hover .effect-text{
+
+        .container:hover .effect-text {
             opacity: 1;
 
         }
-        .container:hover .img{
+
+        .container:hover .img {
             filter: opacity(0.2);
             /* border: 2px solid white; */
         }
-        .container:hover > img{
-            transform: scale3d(1.3,1.3,1.3);
+
+        .container:hover>img {
+            transform: scale3d(1.3, 1.3, 1.3);
         }
-        .container img{
+
+        .container img {
             transition: all 0.5s ease;
         }
-         .effect-text{
+
+        .effect-text {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             opacity: 0;
             transition: all 0.4s ease;
             font-weight: bold;
         }
-        /* .search{
-            position: relative;
+
+        .loader {
+            font-size: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 4px;
         }
-        .placeholder{
-            position: absolute;
-            left: 30px;
-            top: 7px;
-            transition: all 0.5s ease;
-            background-color: rgb(1, 139, 107);
+
+        .load {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(2, 130, 144);
+            border-radius: 50%;
+            animation: load 1s alternate-reverse infinite;
         }
-        #search:focus + .placeholder{
-            transform: translateY(-22px);
-            font-size: 1rem;
-        } */ 
+
+        .load-2 {
+            animation-delay: 1s;
+        }
+
+        @keyframes load {
+            100% {
+                opacity: 0.2;
+            }
+        }
     </style>
 
 </head>
 
-<body class="text-white">
+<body class="text-white" onload="loaderFunc()">
 
-    <nav class="py-6 gap-8 sm:gap-0 flex-col sm:flex-row flex items-center justify-center lg:justify-around">
+    <div class="loader">
+        <div class="load load-1"></div>
+        <div class="load load-2"></div>
+        <div class="load load-3"></div>
+    </div>
+
+    <nav class="py-6 wait gap-8 sm:gap-0 flex-col sm:flex-row flex items-center justify-center lg:justify-around">
         <p class="logo text-3xl">
             <i class='bx bxs-bowl-rice'></i>
             <span>Foodaholic.</span>
@@ -111,7 +136,7 @@
         <div class="search flex justify-center gap-1 sm:gap-2">
             <input type="text" name="seacrh" id="search" placeholder="try something 😋"
                 class="bg2 text-lg lg:text-xl focus:outline-none py-2 px-4 rounded-tl-xl rounded-bl-xl w-2/3">
-                <!-- <p class="placeholder text-xl">try something</p> -->
+            <!-- <p class="placeholder text-xl">try something</p> -->
             <a href="#scroll"><button class="bg text-xl rounded-tr-xl rounded-br-xl px-2 py-2"
                     id="btn">Search</button></a>
         </div>
@@ -119,19 +144,19 @@
 
     <!-- top content -->
 
-    <div class="main text-center mx-4 sm:mx-0 py-24 flex flex-col gap-6">
+    <div class="main wait text-center mx-4 sm:mx-0 py-24 flex flex-col gap-6">
         <p class="text-4xl">What are your favourite cuisines?</p>
         <p class="text-3xl italic">" Get Your Kitchen Buzzing : Hundreds of Recipes to Try Today ! "</p>
     </div>
 
-    <div class="items sm:mx-0 flex py-8 items-center justify-center">
-        
+    <div class="items wait sm:mx-0 flex py-8 items-center justify-center">
+
         <div class="imgs flex w-[85vw] sm:w-3/4 gap-4 overflow-scroll">
             <a href="#scroll" onclick="API('burger');API_IMG('burger')">
                 <div class="container w-[10rem] h-[7rem]">
                     <img class="img "
-                    src="https://img.freepik.com/free-photo/front-view-tasty-meat-burger-with-cheese-salad-dark-background_140725-89597.jpg?size=626&ext=jpg&ga=GA1.1.397493846.1668271889&semt=sph"
-                    alt="img1">
+                        src="https://img.freepik.com/free-photo/front-view-tasty-meat-burger-with-cheese-salad-dark-background_140725-89597.jpg?size=626&ext=jpg&ga=GA1.1.397493846.1668271889&semt=sph"
+                        alt="img1">
                     <p class="text-xl text-center effect-text">Burger</p>
                 </div>
             </a>
@@ -139,8 +164,8 @@
             <a href="#scroll" onclick="API('pizza');API_IMG('pizza')">
                 <div class="container w-[10rem]">
                     <img class="img "
-                    src="https://img.freepik.com/premium-photo/delicious-italian-pizza-slice-pizza-with-cheese-vegetables-hot-cheese-drips-down-edges-slice-pizza-3d-illustration_86390-9521.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
-                    alt="img2">
+                        src="https://img.freepik.com/premium-photo/delicious-italian-pizza-slice-pizza-with-cheese-vegetables-hot-cheese-drips-down-edges-slice-pizza-3d-illustration_86390-9521.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
+                        alt="img2">
                     <p class="text-xl text-center effect-text">Pizza</p>
                 </div>
             </a>
@@ -148,8 +173,8 @@
             <a href="#scroll" onclick="API('pancake');API_IMG('pancake')">
                 <div class="container w-[10rem]">
                     <img class="img "
-                    src="https://img.freepik.com/free-photo/front-view-yummy-round-pancakes-with-cream-red-strawberries-light-desk-cake_140725-22133.jpg?size=626&ext=jpg&ga=GA1.1.397493846.1668271889&semt=ais"
-                    alt="img6">
+                        src="https://img.freepik.com/free-photo/front-view-yummy-round-pancakes-with-cream-red-strawberries-light-desk-cake_140725-22133.jpg?size=626&ext=jpg&ga=GA1.1.397493846.1668271889&semt=ais"
+                        alt="img6">
                     <p class="text-xl text-center effect-text">Pancake</p>
                 </div>
             </a>
@@ -157,8 +182,8 @@
             <a href="#scroll" onclick="API('pasta');API_IMG('pasta')">
                 <div class="container w-[10rem]">
                     <img class="img "
-                    src="https://img.freepik.com/free-photo/penne-pasta-with-tomato-sauce-with-sausage-tomatoes-green-basil-decorated-frying-pan-wooden-table_2829-20103.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
-                    alt="img3">
+                        src="https://img.freepik.com/free-photo/penne-pasta-with-tomato-sauce-with-sausage-tomatoes-green-basil-decorated-frying-pan-wooden-table_2829-20103.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
+                        alt="img3">
                     <p class="text-xl text-center effect-text">Pasta</p>
                 </div>
             </a>
@@ -166,8 +191,8 @@
             <a href="#scroll" onclick="API('biryani');API_IMG('biryani')">
                 <div class="container w-[10rem]">
                     <img class="img "
-                    src="https://img.freepik.com/premium-photo/dum-handi-muttona-biryania-gosht-pilaf-is-prepared-earthen-clay-pot-called-haandi-1-kilo-size-popular-indian-non-vegetarian-fooda_466689-52328.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
-                    alt="img5">
+                        src="https://img.freepik.com/premium-photo/dum-handi-muttona-biryania-gosht-pilaf-is-prepared-earthen-clay-pot-called-haandi-1-kilo-size-popular-indian-non-vegetarian-fooda_466689-52328.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
+                        alt="img5">
                     <p class="text-xl text-center effect-text">Biryani</p>
                 </div>
             </a>
@@ -175,8 +200,8 @@
             <a href="#scroll" onclick="API('noodles');API_IMG('noodles')">
                 <div class="container w-[10rem]">
                     <img class="img "
-                    src="https://img.freepik.com/free-photo/egg-noodle-with-red-roasted-pork-wonton-table_1150-13422.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
-                    alt="img4">
+                        src="https://img.freepik.com/free-photo/egg-noodle-with-red-roasted-pork-wonton-table_1150-13422.jpg?size=626&ext=jpg&ga=GA1.2.397493846.1668271889&semt=sph"
+                        alt="img4">
                     <p class="text-xl text-center effect-text">Noodles</p>
                 </div>
             </a>
@@ -184,13 +209,13 @@
         </div>
     </div>
 
-    <div class="mx-4 sm:mx-0 text-center py-12 lg:py-20">
+    <div class="wait mx-4 sm:mx-0 text-center py-12 lg:py-20">
         <p class="text-3xl">" The Art of Cooking - Elevate Your Skills with Our Delicious Recipes ! "</p>
     </div>
 
     <!-- Receipe details -->
 
-    <div class="flex flex-col justify-center gap-2 mx-2 lg:mx-16 lg:my-16" id="scroll">
+    <div class="wait flex flex-col justify-center gap-2 mx-2 lg:mx-16 lg:my-16" id="scroll">
 
         <div class="name text-4xl text-center py-12">
             <div id="title" class="font"></div>
@@ -220,7 +245,7 @@
             <p id="instruct" class="text-2xl"></p>
         </div>
     </div>
-    <footer>
+    <footer class="wait">
         <p class="text-center mt-6 lg:mt-0 py-4">Copyright &copy; 2022-23 Foodaholic.in | All Rights Reserved</p>
     </footer>
     <script src="https://cdn.tailwindcss.com"></script>

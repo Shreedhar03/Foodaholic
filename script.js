@@ -1,4 +1,22 @@
 
+document.querySelectorAll('.wait').forEach((element)=>{
+    element.style.opacity = 0
+})
+
+let loader = document.querySelector('.loader')
+
+let loaderFunc1 = () => {
+    loader.style.display = "none"
+    document.querySelectorAll('.wait').forEach((element)=>{
+        element.style.opacity = 1
+    })
+}
+
+let loaderFunc = () => {
+    setTimeout(loaderFunc1, 1500)
+}
+
+
 let search = document.querySelector('#search')
 let btn = document.querySelector('#btn')
 let area = document.querySelector('#area')
