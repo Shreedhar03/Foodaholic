@@ -1,5 +1,5 @@
 
-document.querySelectorAll('.wait').forEach((element)=>{
+document.querySelectorAll('.wait').forEach((element) => {
     element.style.opacity = 0
 })
 
@@ -7,7 +7,7 @@ let loader = document.querySelector('.loader')
 
 let loaderFunc1 = () => {
     loader.style.display = "none"
-    document.querySelectorAll('.wait').forEach((element)=>{
+    document.querySelectorAll('.wait').forEach((element) => {
         element.style.opacity = 1
     })
 }
@@ -47,7 +47,21 @@ const API = (name) => {
             category.innerHTML = category_
             title.innerHTML = title__
 
-            document.querySelector('#instruct').innerHTML = data.meals[0].strInstructions
+            document.querySelector('#instruct').innerHTML = ""
+            let recipeArr = data.meals[0].strInstructions.split(".")
+            // console.log(recipeArr)
+
+            inst = recipeArr.map((item, key) => {
+                console.log(item);
+
+                if (item !== "") {
+                    document.querySelector('#instruct').innerHTML += `
+                        ${key + 1}) ${item} <br>
+                `}
+            })
+
+
+            // document.querySelector('#instruct').innerHTML = data.meals[0].strInstructions
 
             let i, count = 1;
 
@@ -93,7 +107,7 @@ const API = (name) => {
 
 }
 
-const APi = (name)=>{
+const APi = (name) => {
 
     const options = {
         method: 'GET',
@@ -102,7 +116,7 @@ const APi = (name)=>{
             'X-RapidAPI-Host': 'recipe-generator.p.rapidapi.com'
         }
     };
-    
+
     fetch('https://recipe-generator.p.rapidapi.com/recipe-generator?ingredients=paneer', options)
         .then(response => response.json())
         .then(response => console.log(response))
@@ -141,7 +155,7 @@ const RapidAPI = () => {
             'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
         }
     };
-    
+
     fetch('https://tasty.p.rapidapi.com/recipes/auto-complete?prefix=chicken%20soup', options)
         .then(response => response.json())
         .then(response => console.log(response))
